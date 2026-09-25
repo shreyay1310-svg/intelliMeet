@@ -1,0 +1,16 @@
+{
+  "name": "intellimeet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IntellMeet - AI-Powered Enterprise Meeting & Collaboration Platform",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
