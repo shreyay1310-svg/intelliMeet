@@ -67,6 +67,29 @@ class ApiService {
     });
   }
 
+  async uploadAvatar(file: File) {
+    const token = this.getToken();
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    const headers: Record<string, string> = {};
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const response = await fetch(`${API_BASE_URL}/users/avatar`, {
+      method: 'POST',
+      headers,
+      body: formData,
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Avatar upload failed');
+    }
+    return result;
+  }
+
   async changePassword(data: any) {
     return this.request<{ success: boolean; message: string }>('/auth/change-password', {
       method: 'PUT',
