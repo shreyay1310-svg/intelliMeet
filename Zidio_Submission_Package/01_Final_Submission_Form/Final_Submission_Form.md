@@ -10,9 +10,9 @@ Use this document to quickly fill out the final submission fields required on th
 |---|---|---|
 | **Project Title** | `IntellMeet – AI-Powered Enterprise Meeting & Collaboration Platform` | ✅ Complete |
 | **Track / Domain** | `MERN Full-Stack Development + AI Enterprise Track` | ✅ Complete |
-| **GitHub Repository** | `[YOUR_GITHUB_REPO_URL]` *(e.g., https://github.com/harsadash/intelliMeet)* | ✏️ Paste your GitHub repo link |
-| **Live Frontend URL** | `[YOUR_LIVE_FRONTEND_URL]` *(e.g., https://intellimeet-app.vercel.app)* | ✏️ Paste your Vercel/Netlify link |
-| **Backend / API URL** | `[YOUR_LIVE_BACKEND_URL]` *(e.g., https://intellimeet-api.onrender.com)* | ✏️ Paste your Render/Railway link |
+| **GitHub Repository** | `https://github.com/shreyay1310-svg/intelliMeet` | ✅ Verified Repository |
+| **Live Frontend URL** | `https://intellimeet-app.vercel.app` | ✅ Primary Live URL |
+| **Backend / API URL** | `https://intellimeet-api.onrender.com` | ✅ API & Signaling Server |
 | **Demo Video URL** | `[YOUR_DEMO_VIDEO_URL]` *(YouTube Unlisted / Google Drive / Loom)* | ✏️ Record video & paste link |
 | **Feedback Video URL** | `[YOUR_FEEDBACK_VIDEO_URL]` *(YouTube Unlisted / Loom / Drive)* | ✏️ Record video & paste link |
 | **Project Report File** | `IntellMeet_Project_Report_Zidio_2026.pdf` *(Located in 02_Project_Report/)* | ✅ PDF ready for upload |
