@@ -426,7 +426,7 @@ html_content = """<!DOCTYPE html>
         </div>
         <div class="cover-meta-item">
           <span class="cover-meta-label">GitHub Repository & Profile</span>
-          <span class="cover-meta-value">@harsadash / intelliMeet</span>
+          <span class="cover-meta-value">@shreyay1310-svg / intelliMeet</span>
         </div>
         <div class="cover-meta-item">
           <span class="cover-meta-label">Curriculum Track</span>
@@ -1164,7 +1164,7 @@ html_content = """<!DOCTYPE html>
   <div class="sign-box" style="margin-top:20px;">
     <div>
       <span style="font-size: 7.5pt; color: #64748b; font-weight: 600; text-transform: uppercase;">Lead Full-Stack Architect & Submitter</span>
-      <p style="font-size: 11pt; font-weight: 800; color: #0f172a; margin: 2px 0 0 0;">Shreya Yadav (@harsadash)</p>
+      <p style="font-size: 11pt; font-weight: 800; color: #0f172a; margin: 2px 0 0 0;">Shreya Yadav (@shreyay1310-svg)</p>
       <p style="font-size: 7.5pt; color: #64748b; margin: 0;">Senior Full-Stack Architect • Zidio Development Enterprise Track</p>
     </div>
     <div style="text-align: right;">
