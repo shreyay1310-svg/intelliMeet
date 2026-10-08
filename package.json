@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "IntellMeet - AI-Powered Enterprise Meeting & Collaboration Platform",
+  "homepage": "https://intelli-meet-nine.vercel.app",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "build": "npm run build --prefix server && npm run build --prefix client",

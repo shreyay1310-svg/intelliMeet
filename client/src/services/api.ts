@@ -1,4 +1,7 @@
-const API_BASE_URL = '/api';
+const RAW_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+export const API_BASE_URL = RAW_BASE_URL
+  ? (RAW_BASE_URL.endsWith('/api') ? RAW_BASE_URL : `${RAW_BASE_URL}/api`)
+  : '/api';
 
 interface RequestOptions extends RequestInit {
   data?: any;
@@ -31,14 +34,32 @@ class ApiService {
       config.body = JSON.stringify(options.data);
     }
 
-    const response = await fetch(url, config);
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.message || 'Something went wrong with the request');
+    let response: Response;
+    try {
+      response = await fetch(url, config);
+    } catch (networkErr: any) {
+      throw new Error('Unable to connect to the backend server. Please ensure the backend is running on port 5000.');
     }
 
-    return result;
+    let result: any = null;
+    const text = await response.text();
+    if (text) {
+      try {
+        result = JSON.parse(text);
+      } catch {
+        // Non-JSON response
+      }
+    }
+
+    if (!response.ok) {
+      const defaultMessage =
+        response.status === 504 || response.status === 502 || response.status === 503
+          ? 'Backend server is unreachable. Please ensure the backend is running on port 5000.'
+          : `Request failed with status ${response.status}`;
+      throw new Error(result?.message || defaultMessage);
+    }
+
+    return (result ?? {}) as T;
   }
 
   // Auth
@@ -77,15 +98,27 @@ class ApiService {
       headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_BASE_URL}/users/avatar`, {
-      method: 'POST',
-      headers,
-      body: formData,
-    });
+    let response: Response;
+    try {
+      response = await fetch(`${API_BASE_URL}/users/avatar`, {
+        method: 'POST',
+        headers,
+        body: formData,
+      });
+    } catch (networkErr: any) {
+      throw new Error('Unable to connect to the backend server. Please ensure the backend is running on port 5000.');
+    }
 
-    const result = await response.json();
+    let result: any = null;
+    const text = await response.text();
+    if (text) {
+      try {
+        result = JSON.parse(text);
+      } catch {}
+    }
+
     if (!response.ok) {
-      throw new Error(result.message || 'Avatar upload failed');
+      throw new Error(result?.message || 'Avatar upload failed');
     }
     return result;
   }

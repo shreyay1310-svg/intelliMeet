@@ -143,7 +143,10 @@ export const MeetingRoomPage: React.FC = () => {
 
   // 3. Connect to Socket.io for Real-time Signaling & Chat
   useEffect(() => {
-    const socket = io('/', {
+    const socketTarget =
+      import.meta.env.VITE_SOCKET_URL ||
+      (import.meta.env.VITE_API_URL ? (import.meta.env.VITE_API_URL as string).replace(/\/api\/?$/, '') : '/');
+    const socket = io(socketTarget, {
       transports: ['websocket', 'polling'],
     });
     socketRef.current = socket;

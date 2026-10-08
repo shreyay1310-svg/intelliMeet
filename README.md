@@ -1,5 +1,12 @@
 # IntellMeet - AI-Powered Enterprise Meeting & Collaboration Platform
 
+[![Live Demo on Vercel](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://intelli-meet-nine.vercel.app)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-shreyay1310--svg%2FintelliMeet-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shreyay1310-svg/intelliMeet)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React%2018-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+
+> 🚀 **Live Production URL:** [**https://intelli-meet-nine.vercel.app**](https://intelli-meet-nine.vercel.app)  
 > **Turn your meetings into meaningful outcomes.**  
 > Complete full-stack MERN enterprise platform featuring real-time WebRTC conferencing, Socket.io signaling, AI meeting intelligence, live transcription, task management, calendar scheduling, and dedicated role-based portals (Employee & Admin).
 
@@ -194,12 +201,13 @@ The platform automatically seeds realistic accounts and workspace data on first 
 
 ## 🌐 Deployment Instructions
 
-### Frontend (Vercel)
-1. Push code to GitHub repository.
-2. Link the repository to Vercel.
-3. Configure the Root Directory as `client`.
-4. Build command: `npm run build`, Output directory: `dist`.
-5. Set environment variable `VITE_API_BASE_URL` pointing to your deployed backend.
+### Frontend (Vercel) - Production Live
+- **Live URL**: [**https://intelli-meet-nine.vercel.app**](https://intelli-meet-nine.vercel.app)
+- **Root Directory**: `client`
+- **Framework Preset**: `Vite`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Environment Variables**: `VITE_API_URL` pointing to your deployed backend.
 
 ### Backend (Render / Railway)
 1. Configure Root Directory as `server`.
@@ -207,5 +215,5 @@ The platform automatically seeds realistic accounts and workspace data on first 
 3. Add environment variables:
    - `MONGO_URI`: Your MongoDB Atlas connection URI
    - `JWT_SECRET`: Secure random string
-   - `CLIENT_URL`: URL of your deployed frontend (e.g. `https://intellimeet.vercel.app`)
-   - `OPENAI_API_KEY`: Your production OpenAI API key
+   - `CLIENT_URL`: `https://intelli-meet-nine.vercel.app`
+   - `OPENAI_API_KEY`: *(Optional)* Your production OpenAI API key

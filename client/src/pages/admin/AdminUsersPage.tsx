@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../../services/api';
+import { api, API_BASE_URL } from '../../services/api';
 import { User } from '../../types';
 import {
   Users,
@@ -52,7 +52,7 @@ export const AdminUsersPage: React.FC = () => {
     const nextStatus = user.status === 'active' ? 'inactive' : 'active';
     const uid = user.id || (user as any)._id;
     try {
-      const res = await fetch(`/api/admin/users/${uid}`, {
+      const res = await fetch(`${API_BASE_URL}/admin/users/${uid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const AdminUsersPage: React.FC = () => {
     const nextRole = user.role === 'admin' ? 'employee' : 'admin';
     const uid = user.id || (user as any)._id;
     try {
-      const res = await fetch(`/api/admin/users/${uid}`, {
+      const res = await fetch(`${API_BASE_URL}/admin/users/${uid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ export const AdminUsersPage: React.FC = () => {
   const handleDeleteUser = async (id: string) => {
     if (confirm('Are you sure you want to permanently delete this user?')) {
       try {
-        const res = await fetch(`/api/admin/users/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/admin/users/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${localStorage.getItem('intellimeet_token')}`,
@@ -114,7 +114,7 @@ export const AdminUsersPage: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/admin/users', {
+      const res = await fetch(`${API_BASE_URL}/admin/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
