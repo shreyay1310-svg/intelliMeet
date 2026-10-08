@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: intellimeet-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CLIENT_URL
+        value: https://intelli-meet-nine.vercel.app
+      - key: JWT_SECRET
+        value: super_secret_intellimeet_jwt_key_2026_dev
+      - key: JWT_REFRESH_SECRET
+        value: super_secret_intellimeet_refresh_key_2026_dev
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: MONGO_URI
+        sync: false
