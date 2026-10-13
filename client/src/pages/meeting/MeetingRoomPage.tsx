@@ -148,8 +148,14 @@ export const MeetingRoomPage: React.FC = () => {
       (import.meta.env.VITE_API_URL ? (import.meta.env.VITE_API_URL as string).replace(/\/api\/?$/, '') : '/');
     const socket = io(socketTarget, {
       transports: ['websocket', 'polling'],
+      reconnectionAttempts: 3,
+      timeout: 4000,
     });
     socketRef.current = socket;
+
+    socket.on('connect_error', () => {
+      console.warn('[MeetingRoom] Socket connection bypassed. Using standalone simulated session.');
+    });
 
     socket.emit('meeting:join', {
       roomId,

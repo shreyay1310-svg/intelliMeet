@@ -52,15 +52,8 @@ export const AdminUsersPage: React.FC = () => {
     const nextStatus = user.status === 'active' ? 'inactive' : 'active';
     const uid = user.id || (user as any)._id;
     try {
-      const res = await fetch(`${API_BASE_URL}/admin/users/${uid}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('intellimeet_token')}`,
-        },
-        body: JSON.stringify({ status: nextStatus }),
-      });
-      if (res.ok) {
+      const res = await api.toggleUserStatus(uid, nextStatus);
+      if (res.success) {
         setUsers((prev) =>
           prev.map((u) => ((u.id || (u as any)._id) === uid ? { ...u, status: nextStatus } : u))
         );
@@ -74,15 +67,8 @@ export const AdminUsersPage: React.FC = () => {
     const nextRole = user.role === 'admin' ? 'employee' : 'admin';
     const uid = user.id || (user as any)._id;
     try {
-      const res = await fetch(`${API_BASE_URL}/admin/users/${uid}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('intellimeet_token')}`,
-        },
-        body: JSON.stringify({ role: nextRole }),
-      });
-      if (res.ok) {
+      const res = await api.toggleUserRole(uid, nextRole);
+      if (res.success) {
         setUsers((prev) =>
           prev.map((u) => ((u.id || (u as any)._id) === uid ? { ...u, role: nextRole } : u))
         );
@@ -95,14 +81,9 @@ export const AdminUsersPage: React.FC = () => {
   const handleDeleteUser = async (id: string) => {
     if (confirm('Are you sure you want to permanently delete this user?')) {
       try {
-        const res = await fetch(`${API_BASE_URL}/admin/users/${id}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('intellimeet_token')}`,
-          },
-        });
-        if (res.ok) {
-          setUsers((prev) => prev.filter((u) => u.id !== id));
+        const res = await api.deleteUser(id);
+        if (res.success) {
+          setUsers((prev) => prev.filter((u) => (u.id || (u as any)._id) !== id));
         }
       } catch (e) {
         console.error(e);
@@ -114,15 +95,7 @@ export const AdminUsersPage: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/admin/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('intellimeet_token')}`,
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
+      const data = await api.createUser(formData);
       if (data.success) {
         setIsAddModalOpen(false);
         setFormData({
@@ -135,7 +108,7 @@ export const AdminUsersPage: React.FC = () => {
         });
         fetchUsers();
       } else {
-        alert(data.message);
+        alert(data.message || 'Failed to create user');
       }
     } catch (e) {
       console.error(e);
