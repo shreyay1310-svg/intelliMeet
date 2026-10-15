@@ -21,6 +21,7 @@ import {
   ChevronRight,
   Maximize2,
   Volume2,
+  X,
 } from 'lucide-react';
 import { ChatMessage, Meeting } from '../../types';
 
@@ -555,12 +556,12 @@ export const MeetingRoomPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Drawer: Tabs for Chat, Participants, AI Notes matching reference image */}
+        {/* Right Drawer: Tabs for Chat, Participants, AI Notes */}
         {isSidebarOpen && (
-          <aside className="w-80 sm:w-88 bg-slate-850 border-l border-slate-800 flex flex-col z-20 shrink-0">
+          <aside className="fixed inset-0 z-40 sm:static sm:w-80 sm:z-20 sm:shrink-0 bg-slate-850 border-l border-slate-800 flex flex-col">
             {/* Tabs Header */}
-            <div className="h-12 border-b border-slate-800 flex items-center px-4 bg-slate-900/60 justify-between">
-              <div className="flex space-x-4">
+            <div className="h-12 border-b border-slate-800 flex items-center px-4 bg-slate-900/80 justify-between">
+              <div className="flex space-x-3 sm:space-x-4">
                 <button
                   onClick={() => setSidebarTab('chat')}
                   className={`text-xs font-bold transition pb-1 border-b-2 ${
@@ -593,6 +594,16 @@ export const MeetingRoomPage: React.FC = () => {
                   <span>AI Notes</span>
                 </button>
               </div>
+
+              {/* Close Drawer Button */}
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+                title="Close Drawer"
+                aria-label="Close Drawer"
+              >
+                <X className="w-4 h-4 sm:w-5 h-5" />
+              </button>
             </div>
 
             {/* Tab 1: Chat Messages */}
@@ -723,59 +734,63 @@ export const MeetingRoomPage: React.FC = () => {
         )}
       </div>
 
-      {/* Bottom Meeting Controls matching reference image 3 */}
-      <footer className="h-18 px-6 bg-slate-900 border-t border-slate-800 flex items-center justify-center shrink-0 relative z-20">
-        <div className="flex items-center gap-2 sm:gap-3">
+      {/* Bottom Meeting Controls */}
+      <footer className="h-16 sm:h-18 px-2 sm:px-6 bg-slate-900 border-t border-slate-800 flex items-center justify-center shrink-0 relative z-20 safe-bottom">
+        <div className="flex items-center gap-1.5 sm:gap-3 max-w-full overflow-x-auto no-scrollbar py-1">
           {/* Microphone Toggle */}
           <button
             onClick={toggleAudio}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               audioEnabled
                 ? 'bg-slate-800 hover:bg-slate-700 text-white'
                 : 'bg-rose-600 text-white hover:bg-rose-700'
             }`}
             title={audioEnabled ? 'Mute Microphone' : 'Unmute Microphone'}
+            aria-label="Toggle Microphone"
           >
-            {audioEnabled ? <Mic className="w-5 h-5" /> : <MicOff className="w-5 h-5" />}
+            {audioEnabled ? <Mic className="w-4 h-4 sm:w-5 h-5" /> : <MicOff className="w-4 h-4 sm:w-5 h-5" />}
           </button>
 
           {/* Video Camera Toggle */}
           <button
             onClick={toggleVideo}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               videoEnabled
                 ? 'bg-slate-800 hover:bg-slate-700 text-white'
                 : 'bg-rose-600 text-white hover:bg-rose-700'
             }`}
             title={videoEnabled ? 'Stop Video' : 'Start Video'}
+            aria-label="Toggle Camera"
           >
-            {videoEnabled ? <Video className="w-5 h-5" /> : <VideoOff className="w-5 h-5" />}
+            {videoEnabled ? <Video className="w-4 h-4 sm:w-5 h-5" /> : <VideoOff className="w-4 h-4 sm:w-5 h-5" />}
           </button>
 
           {/* Share Screen */}
           <button
             onClick={handleToggleScreenShare}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               isScreenSharing
                 ? 'bg-blue-600 text-white hover:bg-blue-700'
                 : 'bg-slate-800 hover:bg-slate-700 text-white'
             }`}
             title="Share Screen"
+            aria-label="Share Screen"
           >
-            <Share2 className="w-5 h-5" />
+            <Share2 className="w-4 h-4 sm:w-5 h-5" />
           </button>
 
           {/* Record Meeting */}
           <button
             onClick={handleToggleRecording}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               isRecording
                 ? 'bg-rose-600 text-white animate-pulse'
                 : 'bg-slate-800 hover:bg-slate-700 text-white'
             }`}
             title={isRecording ? 'Stop Recording' : 'Record Meeting'}
+            aria-label="Record Meeting"
           >
-            <Disc className="w-5 h-5" />
+            <Disc className="w-4 h-4 sm:w-5 h-5" />
           </button>
 
           {/* Toggle Chat */}
@@ -784,14 +799,15 @@ export const MeetingRoomPage: React.FC = () => {
               setIsSidebarOpen(true);
               setSidebarTab('chat');
             }}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               isSidebarOpen && sidebarTab === 'chat'
                 ? 'bg-blue-600 text-white'
                 : 'bg-slate-800 hover:bg-slate-700 text-white'
             }`}
             title="Chat Panel"
+            aria-label="Open Chat"
           >
-            <MessageSquare className="w-5 h-5" />
+            <MessageSquare className="w-4 h-4 sm:w-5 h-5" />
           </button>
 
           {/* Toggle Participants */}
@@ -800,14 +816,15 @@ export const MeetingRoomPage: React.FC = () => {
               setIsSidebarOpen(true);
               setSidebarTab('participants');
             }}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               isSidebarOpen && sidebarTab === 'participants'
                 ? 'bg-blue-600 text-white'
                 : 'bg-slate-800 hover:bg-slate-700 text-white'
             }`}
             title="Participants"
+            aria-label="Open Participants List"
           >
-            <Users className="w-5 h-5" />
+            <Users className="w-4 h-4 sm:w-5 h-5" />
           </button>
 
           {/* Toggle AI Notes */}
@@ -816,23 +833,25 @@ export const MeetingRoomPage: React.FC = () => {
               setIsSidebarOpen(true);
               setSidebarTab('notes');
             }}
-            className={`p-3 rounded-2xl flex items-center justify-center transition cursor-pointer ${
+            className={`p-2.5 sm:p-3 rounded-xl sm:rounded-2xl flex items-center justify-center transition cursor-pointer shrink-0 ${
               isSidebarOpen && sidebarTab === 'notes'
                 ? 'bg-purple-600 text-white'
                 : 'bg-slate-800 hover:bg-slate-700 text-white'
             }`}
             title="AI Notes & Live Transcript"
+            aria-label="Open AI Notes"
           >
-            <Sparkles className="w-5 h-5" />
+            <Sparkles className="w-4 h-4 sm:w-5 h-5" />
           </button>
 
           {/* Leave Button */}
           <button
             onClick={handleLeaveMeeting}
-            className="p-3 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl transition cursor-pointer shadow-md shadow-rose-600/30 ml-2"
+            className="p-2.5 sm:p-3 bg-rose-600 hover:bg-rose-700 text-white rounded-xl sm:rounded-2xl transition cursor-pointer shadow-md shadow-rose-600/30 ml-1 sm:ml-2 shrink-0"
             title="Leave Call"
+            aria-label="Leave Meeting"
           >
-            <PhoneOff className="w-5 h-5" />
+            <PhoneOff className="w-4 h-4 sm:w-5 h-5" />
           </button>
         </div>
       </footer>

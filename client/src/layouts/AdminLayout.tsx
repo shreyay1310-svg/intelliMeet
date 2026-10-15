@@ -15,6 +15,7 @@ import {
   Bell,
   Search,
   Menu,
+  X,
 } from 'lucide-react';
 
 export const AdminLayout: React.FC = () => {
@@ -34,18 +35,27 @@ export const AdminLayout: React.FC = () => {
 
   const sidebarContent = (
     <div className="flex flex-col h-full bg-white border-r border-slate-200 w-64 select-none">
-      <div className="h-16 flex items-center px-6 border-b border-slate-100 gap-3">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-purple-500/20">
-          <Shield className="w-5 h-5 text-white" />
+      <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-purple-500/20">
+            <Shield className="w-5 h-5 text-white" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
+              Intell<span className="text-purple-600">Meet</span>
+            </span>
+            <span className="text-[10px] text-purple-600 font-bold tracking-wider uppercase mt-0.5">
+              Admin Console
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
-            Intell<span className="text-purple-600">Meet</span>
-          </span>
-          <span className="text-[10px] text-purple-600 font-bold tracking-wider uppercase mt-0.5">
-            Admin Console
-          </span>
-        </div>
+        <button
+          onClick={() => setMobileOpen(false)}
+          className="lg:hidden p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition"
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">

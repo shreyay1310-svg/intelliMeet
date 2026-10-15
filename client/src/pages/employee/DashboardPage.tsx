@@ -146,7 +146,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Right Side: CTA Button and AI Robot Card */}
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
             {/* Robot Floating Visual Card */}
             <div
               onClick={() => navigate('/ai-assistant')}
@@ -168,7 +168,7 @@ export const DashboardPage: React.FC = () => {
             {/* Main Action Button */}
             <button
               onClick={() => setIsMeetingModalOpen(true)}
-              className="py-3 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm rounded-2xl shadow-md shadow-blue-500/25 transition-all flex items-center gap-2 cursor-pointer hover:shadow-lg hover:shadow-blue-500/30"
+              className="w-full sm:w-auto py-3 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm rounded-2xl shadow-md shadow-blue-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer hover:shadow-lg hover:shadow-blue-500/30"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
               <span>New Meeting</span>

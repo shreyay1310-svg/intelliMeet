@@ -114,20 +114,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileSidebar }) => {
 
   return (
     <>
-      <header className="h-16 bg-white border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-20">
+      <header className="h-16 bg-white border-b border-slate-200 px-3 sm:px-6 flex items-center justify-between sticky top-0 z-20">
         {/* Left: Mobile hamburger + Search input */}
-        <div className="flex items-center gap-3 flex-1 max-w-xl">
+        <div className="flex items-center gap-2 sm:gap-3 flex-1 max-w-xl min-w-0 mr-2 sm:mr-3">
           <button
             onClick={onOpenMobileSidebar}
-            className="lg:hidden p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition"
+            className="lg:hidden p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition shrink-0"
+            aria-label="Open navigation menu"
           >
             <Menu className="w-5 h-5" />
           </button>
 
           {/* Global Search Bar */}
-          <div ref={searchRef} className="relative w-full max-w-md">
+          <div ref={searchRef} className="relative w-full max-w-md min-w-0">
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                 <Search className="w-4 h-4" />
               </div>
               <input
@@ -140,11 +141,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileSidebar }) => {
                 onFocus={() => {
                   if (searchResults) setIsSearchOpen(true);
                 }}
-                placeholder="Search meetings, people, transcripts..."
-                className="w-full pl-9 pr-14 py-2 bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition"
+                placeholder="Search meetings, tasks..."
+                className="w-full pl-8 sm:pl-9 pr-3 sm:pr-14 py-2 bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition"
               />
-              <div className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none">
-                <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-slate-200 rounded shadow-2xs">
+              <div className="absolute inset-y-0 right-0 pr-2.5 hidden sm:flex items-center pointer-events-none">
+                <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-slate-200 rounded shadow-2xs">
                   Ctrl K
                 </kbd>
               </div>
@@ -152,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileSidebar }) => {
 
             {/* Global Search Results Dropdown */}
             {isSearchOpen && searchResults && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-modal border border-slate-100 overflow-hidden z-50 max-h-96 overflow-y-auto">
+              <div className="fixed inset-x-3 top-16 sm:absolute sm:inset-x-auto sm:top-full sm:left-0 sm:right-0 mt-2 bg-white rounded-xl shadow-modal border border-slate-100 overflow-hidden z-50 max-h-96 overflow-y-auto">
                 <div className="p-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                   <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                     Search Results
@@ -295,7 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileSidebar }) => {
             </button>
 
             {isNotifOpen && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-modal border border-slate-100 overflow-hidden z-50">
+              <div className="fixed inset-x-3 top-16 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full mt-2 sm:w-96 bg-white rounded-2xl shadow-modal border border-slate-100 overflow-hidden z-50">
                 <div className="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-slate-800">Notifications</span>

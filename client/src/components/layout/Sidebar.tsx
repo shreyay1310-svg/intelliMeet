@@ -15,6 +15,7 @@ import {
   LogOut,
   Shield,
   ChevronRight,
+  X,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -47,18 +48,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
   const sidebarContent = (
     <div className="flex flex-col h-full bg-white border-r border-slate-200 w-64 select-none">
       {/* Brand Header */}
-      <div className="h-16 flex items-center px-6 border-b border-slate-100 gap-3">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-blue-500/20">
-          <Video className="w-5 h-5 text-white" />
+      <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-blue-500/20">
+            <Video className="w-5 h-5 text-white" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
+              Intell<span className="text-blue-600">Meet</span>
+            </span>
+            <span className="text-[10px] text-slate-400 font-medium tracking-wider uppercase mt-0.5">
+              Enterprise Suite
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
-            Intell<span className="text-blue-600">Meet</span>
-          </span>
-          <span className="text-[10px] text-slate-400 font-medium tracking-wider uppercase mt-0.5">
-            Enterprise Suite
-          </span>
-        </div>
+        {/* Mobile Close Button */}
+        <button
+          onClick={onCloseMobile}
+          className="lg:hidden p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition"
+          aria-label="Close menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Navigation Links */}

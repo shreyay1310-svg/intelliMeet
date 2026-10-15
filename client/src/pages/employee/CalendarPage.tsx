@@ -89,9 +89,17 @@ export const CalendarPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Swipe Hint */}
+      <div className="sm:hidden flex items-center justify-between text-xs text-slate-500 font-medium px-1">
+        <span>Week Schedule</span>
+        <span className="text-[11px] text-blue-600 font-semibold flex items-center gap-1">
+          ← Swipe to view full week →
+        </span>
+      </div>
+
       {/* Week Grid matching reference design 4 */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-x-auto">
-        <div className="min-w-[700px]">
+      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-x-auto no-scrollbar">
+        <div className="min-w-[650px] sm:min-w-[700px]">
           {/* Day Headers */}
           <div className="grid grid-cols-6 border-b border-slate-200 bg-slate-50/70 text-center text-xs font-bold text-slate-700 py-3">
             <div className="w-20 text-slate-400">Time</div>

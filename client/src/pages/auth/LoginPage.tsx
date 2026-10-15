@@ -164,7 +164,7 @@ export const LoginPage: React.FC = () => {
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 text-center mb-3">
               Fast Demo Accounts (Pre-configured)
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => handleQuickLogin('shreya@zidio.in')}

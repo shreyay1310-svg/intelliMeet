@@ -75,8 +75,16 @@ export const KanbanPage: React.FC = () => {
         </button>
       </div>
 
+      {/* Mobile Swipe Guidance */}
+      <div className="md:hidden flex items-center justify-between text-xs text-slate-500 font-medium px-1">
+        <span>Agile Workflow</span>
+        <span className="text-[11px] text-blue-600 font-semibold flex items-center gap-1">
+          ← Swipe columns →
+        </span>
+      </div>
+
       {/* 4 Kanban Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible items-start no-scrollbar">
         {columns.map((col, colIndex) => {
           const colTasks = tasks.filter(
             (t) => (t.kanbanColumn || 'To Do') === col
@@ -92,7 +100,7 @@ export const KanbanPage: React.FC = () => {
           return (
             <div
               key={col}
-              className="bg-slate-50/80 rounded-2xl p-4 border border-slate-200/80 shadow-2xs space-y-3"
+              className="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center bg-slate-50/80 rounded-2xl p-4 border border-slate-200/80 shadow-2xs space-y-3 shrink-0 md:shrink"
             >
               {/* Column Header */}
               <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">

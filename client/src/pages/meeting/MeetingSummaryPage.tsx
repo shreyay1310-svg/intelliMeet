@@ -114,27 +114,27 @@ export const MeetingSummaryPage: React.FC = () => {
           <span>AI Meeting Summary</span>
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleRegenerate}
             disabled={isRegenerating}
-            className="py-2 px-3.5 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-semibold rounded-xl border border-purple-200/60 transition flex items-center gap-1.5 cursor-pointer disabled:opacity-60"
+            className="py-2 px-3 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-semibold rounded-xl border border-purple-200/60 transition flex items-center gap-1.5 cursor-pointer disabled:opacity-60"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isRegenerating ? 'animate-spin' : ''}`} />
-            <span>{isRegenerating ? 'Analyzing...' : 'Re-generate AI'}</span>
+            <span>{isRegenerating ? 'Analyzing...' : 'Re-generate'}</span>
           </button>
 
           <button
             onClick={handleShare}
-            className="py-2 px-3.5 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition flex items-center gap-1.5 cursor-pointer"
+            className="py-2 px-3 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition flex items-center gap-1.5 cursor-pointer"
           >
             <Share2 className="w-3.5 h-3.5 text-slate-500" />
-            <span>{copiedShare ? 'Link Copied!' : 'Share'}</span>
+            <span>{copiedShare ? 'Copied!' : 'Share'}</span>
           </button>
 
           <button
             onClick={handleDownload}
-            className="py-2 px-3.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow-xs transition flex items-center gap-1.5 cursor-pointer"
+            className="py-2 px-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow-xs transition flex items-center gap-1.5 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download</span>
@@ -179,8 +179,8 @@ export const MeetingSummaryPage: React.FC = () => {
       </div>
 
       {/* Tabs matching reference design: Summary | Transcript | Action Items | Highlights */}
-      <div className="border-b border-slate-200">
-        <div className="flex space-x-8">
+      <div className="border-b border-slate-200 overflow-x-auto no-scrollbar">
+        <div className="flex space-x-6 sm:space-x-8 min-w-max">
           <button
             onClick={() => setActiveTab('summary')}
             className={`py-3 text-xs font-bold border-b-2 transition ${

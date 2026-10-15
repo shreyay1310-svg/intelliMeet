@@ -23,6 +23,8 @@ Use this document to quickly fill out the final submission fields required on th
 
 ## 🔐 Demo Accounts & Access Credentials
 
+
+
 To allow Zidio evaluators to immediately access and evaluate both user roles without registering new accounts, use the following pre-seeded credentials:
 
 ### 1. Employee Portal Access

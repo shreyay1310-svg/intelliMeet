@@ -126,15 +126,15 @@ export const UpcomingMeetingCard: React.FC<UpcomingMeetingCardProps> = ({
           <>
             <button
               onClick={handleAddToCalendar}
-              className="flex-1 py-1.5 px-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl transition flex items-center justify-center gap-1 cursor-pointer"
-              title="Add to Calendar"
+              className="flex-1 py-1.5 px-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl transition flex items-center justify-center gap-1 cursor-pointer min-w-0"
+              title="Add to Calendar (.ics)"
             >
-              <Calendar className="w-3.5 h-3.5 text-slate-400" />
-              <span>Add to Calendar</span>
+              <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <span className="truncate">Add .ics</span>
             </button>
             <button
               onClick={handleJoin}
-              className="py-1.5 px-3 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-1 cursor-pointer"
+              className="py-1.5 px-3 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-1 cursor-pointer shrink-0"
             >
               <span>Join</span>
             </button>
